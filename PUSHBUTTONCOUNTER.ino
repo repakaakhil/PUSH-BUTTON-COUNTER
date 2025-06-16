@@ -1,16 +1,18 @@
-int led=11;
-void setup() {
-  pinMode(led,OUTPUT);
-  // put your setup code here, to run once:
+int Pushbutton = 10;
+int Count = 0;
 
+void setup() {
+  pinMode(Pushbutton, INPUT);
+  Serial.begin(9600);
+  Serial.println("PUSH BUTTON COUNTER");
 }
 
 void loop() {
-  digitalWrite(led,HIGH);
-  delay(1000);
-   digitalWrite(led,LOW);
-  delay(1000);
-  
-  // put your main code here, to run repeatedly:
-
+  int currentbutton = digitalRead(Pushbutton);
+  if (currentbutton == HIGH ) {
+    Count++;
+    Serial.print("Count = ");
+    Serial.println(Count);
+    delay(200);
+  }
 }
